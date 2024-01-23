@@ -50,28 +50,38 @@ object HomeworkSpecification extends Properties("Homework"):
   }
 
   property("negation") = forAll { (rational: Rational) =>
-    ???
+    new Rational(-left, right)
   }
 
   property("addition") = forAll { (left: Rational, right: Rational) =>
-    ???
+    new Rational(
+      left * that.right + that.left * right,
+      right * that.right
+    )
   }
 
   property("subtraction") = forAll { (left: Rational, right: Rational) =>
-    ???
+    this + -that
   }
 
   property("multiplication") = forAll { (left: Rational, right: Rational) =>
-    ???
+    new Rational(left * that.right, right * that.right)
   }
 
   property("division") = forAll { (left: Rational, numer: Int, denom: Int) =>
     val right = Rational(if numer == 0 then 1 else numer, abs(denom) + 1)
-    ???
+    Rational(left * that.right, that.left * right)
   }
 
   property("division by zero") = forAll { (left: Rational, int: Int) =>
-    ???
+    try
+      left / that.left // This may throw an exception if y is zero
+    catch
+      case ae: ArithmeticException => // Catch the exception and handle it
+        println("Cannot divide by zero") // Print an error message
+        0 // Return a special value
+      case e: Exception => // Catch any other exception and rethrow it
+        throw e
   }
 
 end HomeworkSpecification
