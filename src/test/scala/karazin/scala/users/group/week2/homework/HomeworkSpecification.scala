@@ -84,4 +84,3 @@ object HomeworkSpecification extends Properties("Homework"):
   }
 
 end HomeworkSpecification
-
