@@ -61,7 +61,7 @@ object HomeworkSpecification extends Properties("Homework"):
   }
 
   property("subtraction") = forAll { (left: Rational, right: Rational) =>
-    left + -right
+    (left + -right)
   }
 
   property("multiplication") = forAll { (left: Rational, right: Rational) =>
@@ -70,7 +70,7 @@ object HomeworkSpecification extends Properties("Homework"):
 
   property("division") = forAll { (left: Rational, numer: Int, denom: Int) =>
     val right = Rational(if numer == 0 then 1 else numer, abs(denom) + 1)
-    Rational(left.numer * right.denom, right.numer * left.denom)
+    Rational(left.numer*right.denom, right.numer*left.denom)
   }
 
   property("division by zero") = forAll { (left: Rational, int: Int) =>
