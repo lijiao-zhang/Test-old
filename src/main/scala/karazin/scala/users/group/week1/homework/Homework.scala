@@ -107,5 +107,5 @@ object Homework :
       }
     }
   end `Look-and-say Sequence`
-  
+
 end Homework
